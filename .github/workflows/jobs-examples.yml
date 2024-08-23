@@ -1,14 +1,14 @@
 name: jobs examples
 
 on:
-  push
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: create an artifact for reuse
+      - name: create an artifact for reuse (changed)
         run: echo "Full featured artifact" > build-result.txt
 
       - name: upload artifact
