@@ -1,18 +1,14 @@
 name: jobs examples
 
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: create an artifact for reuse (changed)
-        run: echo "Full featured artifact" > build-result.txt
-
-      - name: upload artifact
-        uses: actions/upload-artifact@v4
+        run: echo “Full featured artifact” > build-result.txt
+      - uses: actions/upload-artifact@v4
         with:
           name: build-result
           path: build-result.txt
@@ -21,13 +17,10 @@ jobs:
     if: "contains(github.event.head_commit.message, '[deploy]')"
     runs-on: ubuntu-latest
     needs: build
-
     steps:
-      - name: download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: build-result
           path: build-result.txt
-
       - name: use of artifact created
         run: ls build-result.txt

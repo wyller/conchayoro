@@ -1,11 +1,12 @@
-name: 'Hello World'
-description: 'Greet the caller'
+name: "Hello World"
+
+description: "Greet the caller"
 
 inputs:
   the-caller:
-    description: 'Who is there'
+    description: "Who is there"
     required: true
-    default: 'World'
+    default: "World"
 
 outputs:
   random-number:
@@ -17,7 +18,6 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.the-caller }}.
       shell: bash
-
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
